@@ -12,46 +12,49 @@ Don't forget to add an actual set of image descriptions to your image carousel. 
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link rel="stylesheet" href="style.css">
     <title>
       Lab 1 - McCormack
     </title>
   </head>
-  <div id="wrapper">
-    <h1>
-      <header>
-        Henry McCormack's Labs for INST377
-      </header>
-    </h1>
-    <div id="container">
-      <div id="left">
-        <h2>
-          Albums
-        </h2>
-        <ol type="1">
-          <li>Selected Ambient Works 85-92 - Aphex Twin</li>
-          <li>Mmm... Food - MF DOOM</li>
-          <li>Inner Space - Chick Corea</li>
-          <li>Geogaddi - Boards of Canada</li>
-          <li>Ribbons - Bibio</li>
-        </ol>
-      </div>
-      <div id="right">
-        <h2>
-          Image Carousel
-        </h2>
-        <div>
-          <img src="images/mochi.jpg" alt="JPG mochi!">
-          <img src="images/mochi.png" alt="PNG mochi!">
-          <img src="images/mochi.gif" alt="GIF mochi!">
-          <img src="images/mochi.svg" alt="SVG mochi!">
+  <body>
+    <div class="wrapper">
+        <header class="header">
+        <h1>
+            Henry McCormack's Labs for INST377
+        </h1>
+        </header>
+        <div class="container">
+            <div class="box left_section">
+                <h2>
+                Albums
+                </h2>
+                <ol type="1" class="box">
+                  <li>Selected Ambient Works 85-92 - Aphex Twin</li>
+                  <li>Mmm... Food - MF DOOM</li>
+                  <li>Inner Space - Chick Corea</li>
+                  <li>Geogaddi - Boards of Canada</li>
+                  <li>Ribbons - Bibio</li>
+                </ol>
+            </div>
+            <div class="box right_section">
+                <h2>
+                Image Carousel
+                </h2>
+                <div class="grid">
+                  <img src="images/mochi.jpg" alt="JPG mochi!">
+                  <img src="images/mochi.png" alt="PNG mochi!">
+                  <img src="images/mochi.gif" alt="GIF mochi!">
+                  <img src="images/mochi.svg" alt="SVG mochi!">
+                </div>
+                <div class="box">
+                A cartoon mochi in JPG, PNG, GIF, and SVG formats!
+                </div>
+            </div>
         </div>
-        <div>
-          A cartoon mochi in JPG, PNG, GIF, and SVF formats
-        </div>
-      </div>
+        <footer class="footer">
+        Github: hmccormak, <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
+        </footer>
     </div>
-    <footer>
-      Github: hmccormak, <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
-    </footer>
-  </div>
+  </body>
 </html>
