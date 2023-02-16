@@ -38,16 +38,19 @@ Don't forget to add an actual set of image descriptions to your image carousel. 
                 </ol>
             </div>
             <div class="box right_section">
-                <h2>
-                Image Carousel
-                </h2>
+                <h2>Image Carousel</h2>
                 <div class="carousel">
-                  <button type="button" class="prev">Prev</button>
-                  <img src="images/mochi.jpg" alt="JPG mochi!">
-                  <button type="button" class="next">Next</button>
+                  <button class="prev">Prev</button>
+                  <div class="slides">
+                    <img class="carousel_item visible" id="slide_1" src="images/shrek1.png" alt="Shrek">
+                    <img class="carousel_item hidden" id="slide_2" src="images/shrek2.png" alt="Shrek">
+                    <img class="carousel_item hidden" id="slide_3" src="images/shrek3.png" alt="Shrek">
+                    <img class="carousel_item hidden" id="slide_4" src="images/shrek4.png" alt="Shrek">
+                  </div>
+                  <button class="next">Next</button>
                 </div>
                 <div class="box">
-                A cartoon mochi (from left to right descending) in JPG, PNG, GIF, and SVG formats!
+                Shrek is love, Shrek is life.
                 </div>
             </div>
         </div>
@@ -55,5 +58,6 @@ Don't forget to add an actual set of image descriptions to your image carousel. 
         Github: hmccormak, <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
         </footer>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
