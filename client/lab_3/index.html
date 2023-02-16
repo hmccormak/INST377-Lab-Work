@@ -1,5 +1,59 @@
-<!--
-    Replace this with your working code from Lab 2, and include:
-    - The styles in this folder's `style.css`
-    - The script in script.js, which should be included via a `<script src="script.js" >` call before your closing </body> tag 
--->
+<!-- Replace this with your complete HTML from Lab 1
+
+Hook it up to CSS by including style.css in the <head> tag
+
+Then add CSS class names to your HTML to make it look like the lab pictures.
+For example: <div class="selector">
+
+You should not need to edit the CSS to do this, only the HTML.
+
+Don't forget to add an actual set of image descriptions to your image carousel. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <title>
+      Lab 2 - McCormack
+    </title>
+  </head>
+  <body>
+    <div class="wrapper">
+        <header class="header">
+        <h1>
+            Henry McCormack's Labs for INST377
+        </h1>
+        </header>
+        <div class="container">
+            <div class="box left_section">
+                <h2>
+                Album Names
+                </h2>
+                <ol type="1" class="box">
+                  <li>Selected Ambient Works 85-92 - Aphex Twin</li>
+                  <li>Mmm... Food - MF DOOM</li>
+                  <li>Inner Space - Chick Corea</li>
+                  <li>Geogaddi - Boards of Canada</li>
+                  <li>Ribbons - Bibio</li>
+                </ol>
+            </div>
+            <div class="box right_section">
+                <h2>
+                Image Carousel
+                </h2>
+                <div class="carousel">
+                  <button type="button" class="prev">Prev</button>
+                  <img src="images/mochi.jpg" alt="JPG mochi!">
+                  <button type="button" class="next">Next</button>
+                </div>
+                <div class="box">
+                A cartoon mochi (from left to right descending) in JPG, PNG, GIF, and SVG formats!
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+        Github: hmccormak, <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
+        </footer>
+    </div>
+  </body>
+</html>
