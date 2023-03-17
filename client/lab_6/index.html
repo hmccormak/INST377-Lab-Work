@@ -18,7 +18,7 @@
 <html lang="en">
   <head>
     <link rel="stylesheet" href="style.css" />
-    <title>Lab 5 - McCormack</title>
+    <title>Lab 6 - McCormack</title>
   </head>
   <div class="wrapper">
     <header class="header">
@@ -26,23 +26,29 @@
     </header>
     <div class="container">
       <div class="left_section box">
-        <h3>Input Form</h3>
+        <h2>Input Form</h2>
         <div class="box">
+          <button type="button" id="data_load">Load County data</button>
+          <div>Restaurant Name</div>
           <form
             class="main_form"
             action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
           >
             <label for="resto"></label
             ><input type="text" name="resto" id="resto" />
-            <button type="submit">Load data</button>
-            <button type="button" class="filter_button">Filter data</button>
+            <div class="buttons">
+                <button type="button" id="filter">Filter data</button>
+                <button type="button" id="generate">Generate list</button>
+            </div>  
           </form>
         </div>
       </div>
       <div class="right_section box">
-        <h3>Local Restaurants</h3>
-        <div class="restaurant_list box">A list of local restaurants</div>
-        <ol class="list_output"></ol>
+        <h2>Local Restaurants</h2>
+        <ol class="box" id="restaurant_list">
+            A list of local restaurants
+        </ol>
+        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
       </div>
     </div>
     <footer class="footer">
