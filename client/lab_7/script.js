@@ -19,14 +19,14 @@ function injectHTML(list) {
   });
 }
 
-function filterList(list, query) {
-  console.log("filtering...");
-  return list.filter((item) => {
-    const lowerCaseName = item.name.toLowerCase();
-    const lowerCaseQuery = query.toLowerCase();
-    return lowerCaseName.includes(lowerCaseQuery);
-  });
-}
+// function filterList(list, query) {
+//   console.log("filtering...");
+//   return list.filter((item) => {
+//     const lowerCaseName = item.name.toLowerCase();
+//     const lowerCaseQuery = query.toLowerCase();
+//     return lowerCaseName.includes(lowerCaseQuery);
+//   });
+// }
 
 function cutRestaurantList(list) {
   console.log("cutting list...");
@@ -35,6 +35,14 @@ function cutRestaurantList(list) {
     const idx = getRandomIntInclusive(0, list.length - 1);
     return list[idx];
   }));
+}
+
+function filterList(array, filterInputValue) {
+  return newArray = array.filter((item) => {
+    const lowerCaseName = item.name.toLowerCase();
+    const lowerCaseQuery = filterInputValue.toLowerCase();
+    return lowerCaseName.includes(lowerCaseQuery);
+  });
 }
 
 async function mainEvent() {
@@ -87,10 +95,6 @@ async function mainEvent() {
       "https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
     );
 
-    if (storedList.length > 0) {
-      generateListButton.classList.remove("hidden");
-    }
-
     loadAnimation.style.display = "none";
     /*
      ## Get request with query parameters
@@ -108,6 +112,10 @@ async function mainEvent() {
 
     // This changes the response from the GET into data we can use - an "object"
     storedList = await results.json();
+
+    if (storedList.length > 0) {
+      generateListButton.classList.remove("hidden");
+    }
 
     loadAnimation.style.display = "none";
     //const arrayFromJson = await results.json();
