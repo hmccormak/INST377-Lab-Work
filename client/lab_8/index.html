@@ -1,0 +1,60 @@
+<!--
+    This is how to build the CSS-only load animation from loading.io    
+    <div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+
+    This is helpful for showing your client-side users when data is loading,
+    since there's otherwise no sign your app is thinking about something!
+
+    Try placing it at the same level in your element tree as your Submit button
+-->
+
+<!-- Bring in your successful HTML/CSS from the Flexbox lab -->
+<!-- Your page will need a form in it with an 'action' to /api and a single text field with an id/name of "resto" -->
+<!-- If you open /routes/apiRoutes and go to line 38 you will find the server side answer to your request! -->
+
+<!-- Temporarily unhook your script.js file from your main index file -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <title>Lab 7 - McCormack</title>
+  </head>
+  <div class="wrapper">
+    <header class="header">
+      <h1>Henry McCormack's Labs for INST377</h1>
+    </header>
+    <div class="container">
+      <div class="left_section box">
+        <h2>Input Form</h2>
+        <div class="box">
+          <button type="button" id="data_load">Load County data</button>
+          <div>Restaurant Name</div>
+          <form
+            class="main_form"
+            action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
+          >
+            <label for="resto"></label
+            ><input type="text" name="resto" id="resto" />
+            <div class="buttons">
+                <button type="button" id="filter">Filter data</button>
+                <button type="button" id="generate">Generate list</button>
+            </div>  
+          </form>
+        </div>
+      </div>
+      <div class="right_section box">
+        <h2>Local Restaurants</h2>
+        <ol class="box" id="restaurant_list">
+            A list of local restaurants
+        </ol>
+        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+    <footer class="footer">
+      Github: hmccormak,
+      <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
+    </footer>
+    <script src="script.js"></script>
+  </div>
+</html>
