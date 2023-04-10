@@ -3,6 +3,15 @@
   by adding `<script src="script.js">` just before your closing `</body>` tag
 */
 
+function initMap() {
+  var map = L.map("map").setView([51.505, -0.09], 13);
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution:
+      '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+  }).addTo(map);
+}
+
 function getRandomIntInclusive(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -38,11 +47,11 @@ function cutRestaurantList(list) {
 }
 
 function filterList(array, filterInputValue) {
-  return newArray = array.filter((item) => {
+  return (newArray = array.filter((item) => {
     const lowerCaseName = item.name.toLowerCase();
     const lowerCaseQuery = filterInputValue.toLowerCase();
     return lowerCaseName.includes(lowerCaseQuery);
-  });
+  }));
 }
 
 async function mainEvent() {
@@ -59,6 +68,8 @@ async function mainEvent() {
 
   let storedList = [];
   let currentList = [];
+
+  initMap();
 
   loadDataButton.addEventListener("click", async (submitEvent) => {
     // async has to be declared on every function that needs to "await" something
