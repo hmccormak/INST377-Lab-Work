@@ -4,12 +4,30 @@
 */
 
 function initMap() {
-  var map = L.map("map").setView([51.505, -0.09], 13);
+  const carto = L.map("map").setView([38.98, -76.93], 12);
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     maxZoom: 19,
     attribution:
       '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  }).addTo(map);
+  }).addTo(carto);
+  return carto;
+}
+
+function markerPlace(array, map) {
+  console.log('array for markers', array);
+  
+  //clean map
+  map.eachLayer((layer) => {
+    if (layer instanceof L.Marker) {
+      layer.remove();
+    }
+  });
+  
+  array.forEach((item) => {
+    console.log('markerplace', item);
+    const {coordinates} = item.geocoded_column_1;
+    L.marker([coordinates[1], coordinates[0]]).addTo(map);
+  })
 }
 
 function getRandomIntInclusive(min, max) {
@@ -57,8 +75,8 @@ function filterList(array, filterInputValue) {
 async function mainEvent() {
   // the async keyword means we can make API requests
   const form = document.querySelector(".main_form"); // This class name needs to be set on your form before you can listen for an event on it
-  const filterDataButton = document.querySelector("#filter");
   const loadDataButton = document.querySelector("#data_load");
+  const clearDataButton = document.querySelector("#data_clear");
   const generateListButton = document.querySelector("#generate");
   const textFeild = document.querySelector("#resto");
 
@@ -66,10 +84,15 @@ async function mainEvent() {
   loadAnimation.style.display = "none";
   generateListButton.classList.add("hidden");
 
-  let storedList = [];
-  let currentList = [];
+  const carto = initMap();
 
-  initMap();
+  const storedData = localStorage.getItem('storedData');
+  let parsedData = JSON.parse(storedData);
+  if (parsedData?.length > 0) {
+    generateListButton.classList.remove("hidden");
+  }
+
+  let currentList = [];
 
   loadDataButton.addEventListener("click", async (submitEvent) => {
     // async has to be declared on every function that needs to "await" something
@@ -122,9 +145,11 @@ async function mainEvent() {
       */
 
     // This changes the response from the GET into data we can use - an "object"
-    storedList = await results.json();
+    const storedList = await results.json();
+    localStorage.setItem('storedData', JSON.stringify(storedList));
+    parsedData = storedList;
 
-    if (storedList.length > 0) {
+    if (parsedData?.length > 0) {
       generateListButton.classList.remove("hidden");
     }
 
@@ -135,23 +160,12 @@ async function mainEvent() {
     // it initially contains all 1,000 records from your request
   });
 
-  filterDataButton.addEventListener("click", (event) => {
-    console.log("clicked filterButton");
-
-    const formData = new FormData(form);
-    const formProps = Object.fromEntries(formData);
-
-    console.log(formProps);
-    const newList = filterList(currentList, formProps.resto);
-
-    injectHTML(newList);
-  });
-
   generateListButton.addEventListener("click", (event) => {
     console.log("generating new list...");
-    currentList = cutRestaurantList(storedList);
+    currentList = cutRestaurantList(parsedData);
     console.log(currentList);
     injectHTML(currentList);
+    markerPlace(currentList, carto);
   });
 
   textFeild.addEventListener("input", (event) => {
@@ -159,6 +173,13 @@ async function mainEvent() {
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
+  });
+
+  clearDataButton.addEventListener("click", (event) => {
+    console.log("clearing browser data...");
+    localStorage.clear();
+    console.log("local storage cleared!");
+
   });
 }
 

@@ -17,11 +17,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+      integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+      crossorigin=""
+    />
     <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
-    integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
-    crossorigin=""/>
-    <title>Lab 7 - McCormack</title>
+    <script
+      src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+      integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+      crossorigin=""
+    ></script>
+    <title>Lab 8 - McCormack</title>
   </head>
   <div class="wrapper">
     <header class="header">
@@ -32,7 +40,8 @@
         <h2>Input Form</h2>
         <div class="box">
           <button type="button" id="data_load">Load County data</button>
-          <div>Restaurant Name</div>
+          <button type="button" id="data_clear">Clear County data</button>
+          <div>Filter by Restaurant Name</div>
           <form
             class="main_form"
             action="https://data.princegeorgescountymd.gov/resource/umjn-t2iz.json"
@@ -40,20 +49,23 @@
             <label for="resto"></label
             ><input type="text" name="resto" id="resto" />
             <div class="buttons">
-                <button type="button" id="filter">Filter data</button>
-                <button type="button" id="generate">Generate list</button>
-            </div>  
+              <button type="button" id="generate">Generate list</button>
+            </div>
           </form>
         </div>
       </div>
       <div class="right_section box">
         <h2>Local Restaurants</h2>
+        <div class="box" id="map"></div>
         <ol class="box" id="restaurant_list">
-            A list of local restaurants
+          A list of local restaurants
         </ol>
-        <div class="lds-ellipsis" id="data_load_animation"><div></div><div></div><div></div><div></div></div>
-      </div>
-      <div class="bottom box" id="map">
+        <div class="lds-ellipsis" id="data_load_animation">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </div>
     <footer class="footer">
@@ -61,8 +73,5 @@
       <a href="https://github.com/hmccormak">https://github.com/hmccormak</a>
     </footer>
     <script src="script.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
-    integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
-    crossorigin=""></script>
   </div>
 </html>
