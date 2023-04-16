@@ -173,13 +173,13 @@ async function mainEvent() {
     const newList = filterList(currentList, event.target.value);
     console.log(newList);
     injectHTML(newList);
+    markerPlace(newList, carto);
   });
 
   clearDataButton.addEventListener("click", (event) => {
     console.log("clearing browser data...");
     localStorage.clear();
     console.log("local storage cleared!");
-
   });
 }
 
